@@ -32,6 +32,17 @@ describe('Find the greatest number', () => {
   });
 });
 
+function greatestOfTwoNumbers(num1,num2)
+{
+   if(num1>num2)
+   return(num1);
+
+   else return(num2);
+}
+
+
+
+
 describe('Find the scary word', () => {
   it('should create a function named findScaryWord', () => {
     expect(typeof findScaryWord).toBe('function');
@@ -59,6 +70,45 @@ describe('Find the scary word', () => {
   });
 });
 
+word=[]
+function findScaryWord(word){
+  let longest=0
+  let scary
+    if (word.length==0)
+        return null
+
+else {
+  for(let i=0;i<word.length;i++)
+   {
+         if(word[i].length>=longest)
+           {
+            scary=word[i] 
+            longest=word[i].length
+
+           }    
+   }
+
+   for(let j=0;j<word.length;j++)
+   {
+         if(longest==word[j])
+         {
+          scary=word[j]    
+          break
+         }
+
+         return(scary)
+            
+   }
+  
+}
+ 
+}
+
+
+
+
+
+
 describe('Calculate the sum of array of numbers', () => {
   it('should create a function named netPrice', () => {
     expect(typeof netPrice).toBe('function');
@@ -80,6 +130,21 @@ describe('Calculate the sum of array of numbers', () => {
     expect(netPrice([10, 5, 4, 32, 8])).toBe(59);
   });
 });
+
+var summ=[];
+function netPrice(summ)
+{
+   let sum=0;
+    for(let i=0;i<summ.length;i++)
+   {
+      sum=sum+summ[i]
+   }
+    let len = summ.length;
+    return(sum);
+}
+
+
+
 
 describe('Bonus: Calculate the sum', () => {
   it('should create a function named add', () => {
@@ -124,6 +189,34 @@ describe('Bonus: Calculate the sum', () => {
   });
 });
 
+var mixed_array=[];
+function add(mixed_array)
+{
+      let sum=0;
+      for(let i=0;i<mixed_array.length;i++)
+   {
+       if(typeof(mixed_array[i])==="object"||typeof(mixed_array[i])==="array"||typeof(mixed_array[i])==="undefined")
+       console.log("ERROR!! unsupported data sir")
+
+
+         else if(mixed_array.length==1)
+            sum=mixed_array[i]
+
+          else if(typeof(mixed_array[i])=== "string")
+            sum+=mixed_array[i].length
+      
+
+          else
+             sum=sum+mixed_array[i]
+
+      
+   }
+  
+   return(sum);
+}
+
+
+
 describe('Calculate the average of an array of numbers', () => {
   it('should create a function named midPointOfLevels', () => {
     expect(typeof midPointOfLevels).toBe('function');
@@ -148,6 +241,21 @@ describe('Calculate the average of an array of numbers', () => {
     expect(midPointOfLevels([9, 10, 82, 92, 32, 102, 58])).toBe(55);
   });
 });
+ var avg=[];
+ function midPointOfLevels(avg)
+ {
+  let sum=0;
+  let average;
+    if(avg.length==0)
+    return (null);
+ else for(let i=0;i<avg.length;i++)
+     {
+          sum+=avg[i];
+     }
+    average=(sum/avg.length);
+     return(average);
+ }
+
 
 describe('Calculate the average of an array of strings', () => {
   it('should create a function named averageWordLength', () => {
@@ -181,7 +289,24 @@ describe('Calculate the average of an array of strings', () => {
     ).toBe(4.9);
   });
 });
+      var avgWordLength=[];
+       function averageWordLength(avgWordLength)
+    {
+      let len=0;
+      if(avgWordLength.length==0)
+      return (null);
 
+      else
+        for(let i=0;i<avgWordLength.length;i++)
+        {
+           len+=avgWordLength[i].length;
+        }  
+      return(len/avgWordLength.length);
+   }
+
+
+
+   
 describe('Bonus: Calculate the average of a mixed elements array', () => {
   it('should create a function named avg', () => {
     expect(typeof avg).toBe('function');
@@ -198,7 +323,55 @@ describe('Bonus: Calculate the average of a mixed elements array', () => {
     // true is counted as 1
     expect(avg([6, 12, 'miami', 1, 'barca', '200', 'lisboa', 8, true])).toBe(5.22);
   });
-});
+
+  let mixelements=[]
+  function avg(mixelements)
+  {
+    var sum=0
+    var len=0
+    if(mixelements.length==0)
+    return (null)
+    
+    else{
+      for(let j=0;j<mixelements.length;j++)
+      {
+        if(typeof(mixelements[j])=='boolean')
+        {
+          if(boolean==true)
+          {
+              sum+=1
+              len+=1
+          }
+
+             else
+           {
+              sum+=0
+              len+=1
+          }
+        }
+
+
+
+        else if(typeof(mixelements[j])=='string')
+         {
+           sum+=mixelements[j].length
+           len+=1
+         }
+
+         else 
+         sum+=mixelements[i]
+         len+=1
+      }
+    }
+    return (sum/len)
+  }
+})
+
+
+
+
+
+
 
 describe('Unique array', () => {
   it('should create a function named uniquifyArray', () => {
@@ -241,6 +414,29 @@ describe('Unique array', () => {
   });
 });
 
+let repeatedElements=[]
+let uniqueArray=[]
+ function uniquifyArray(repeatedElements)
+{
+     let duplicate
+      for(let i=0;i<repeatedElements.length;i++)
+     {
+        duplicate=repeatedElements[i]
+
+          for(let j=i+1;j<repeatedElements.length;j++)
+          {
+                  if(repeatedElements[j]==repeatedElements[i])
+                 {
+                  repeatedElements=repeatedElements.pop(repeatedElements[j])
+                  uniqueArray=uniqueArray.push(repeatedElements[i])
+
+                 }
+          }
+
+      } 
+           return (uniqueArray)
+}
+
 describe('Find elements', () => {
   it('should create a function named searchElement', () => {
     expect(typeof searchElement).toBe('function');
@@ -270,7 +466,29 @@ describe('Find elements', () => {
       true
     );
   });
+  let findingWord
+var AllWords=[]
+function searchElement(AllWords,findingWord)
+  {
+      if(ALLWords.length==0)
+        return (null)
+
+    else
+    {
+     for(let i=0;i<ALLWords.length;i++)
+       {
+           if(AllWords[i]==findingWord)
+             return (true)
+          else
+             return (false)
+
+         }
+
+      }
+  }
 });
+
+
 
 describe('Count repetition', () => {
   it('should create a function named howManyTimesElementRepeated', () => {
@@ -311,6 +529,23 @@ describe('Count repetition', () => {
   });
 });
 
+let search_word
+let all_words=[]
+function howManyTimesElementRepeated(all_words,search_word)
+
+ {
+      let count=0;
+      for(let i=0;i<all_words.length;i++)
+      {
+         if(all_words[i]==search_word)
+         count+=1
+      }
+
+       return(count)
+ }
+
+
+
 describe('Bonus Quest - greatestProduct', () => {
   it('should create a function named maximumProduct', () => {
     expect(typeof maximumProduct).toBe('function');
@@ -344,3 +579,16 @@ describe('Bonus Quest - greatestProduct', () => {
 
  
 });
+
+let mat=[]
+function maximumProduct(mat)
+{
+  let count_of_one=0
+   for(let i=0,j=0;i<mat.length;i++,j++)
+     {
+        if(mat[i][j]==1)
+        count_of_one+=1;
+     }
+     if(count_of_one==mat.length)
+      return 1
+}
