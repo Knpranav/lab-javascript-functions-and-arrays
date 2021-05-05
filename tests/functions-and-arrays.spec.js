@@ -70,43 +70,63 @@ describe('Find the scary word', () => {
   });
 });
 
-word=[]
-function findScaryWord(word){
-  let longest=0
-  let scary
-    if (word.length==0)
-        return null
+word = []
 
-else {
-  for(let i=0;i<word.length;i++)
-   {
-         if(word[i].length>=longest)
-           {
-            scary=word[i] 
-            longest=word[i].length
+function findScaryWord(word) {
+	let longest = 0
+	let scary
+	if (word.length == 0)
+		return null
 
-           }    
-   }
+	else {
+		for (let i = 0; i < word.length; i++) 
+    {
+			if (word[i].length >= longest) 
+        	longest = word[i].length
 
-   for(let j=0;j<word.length;j++)
-   {
-         if(longest==word[j])
-         {
-          scary=word[j]    
-          break
+			}
+		
+
+		for (let j = 0; j < word.length; j++) 
+     {
+		  	 if (longest == word[j].length) 
+			  {
+         	 scary = word[j]
+			    	 break
          }
 
-         return(scary)
-            
-   }
-  
+
+         
+     }
+
+	}
+       return(scary)
 }
- 
+
+
+/*
+function findScaryWord(words){
+  if(words.length==0){
+    return null;
+  }  
+  else if(words.length==1){
+    return words[0];
+  }
+  else if(words.length==2){
+    if(words[0].length==words[1].length){
+      return words[0];
+    }
+  }
+  else if(words.length>2){
+    for(i=0;i<words.length;i++){      
+      if(words[0].length<words[i].length){
+        words[0] = words[i];
+      }   
+    }
+    return words[0];
+  }
 }
-
-
-
-
+*/
 
 
 describe('Calculate the sum of array of numbers', () => {
@@ -196,7 +216,7 @@ function add(mixed_array)
       for(let i=0;i<mixed_array.length;i++)
    {
        if(typeof(mixed_array[i])==="object"||typeof(mixed_array[i])==="array"||typeof(mixed_array[i])==="undefined")
-       console.log("ERROR!! unsupported data sir")
+        throw Error("Unsupported data type sir or ma'am");
 
 
          else if(mixed_array.length==1)
@@ -327,17 +347,17 @@ describe('Bonus: Calculate the average of a mixed elements array', () => {
   let mixelements=[]
   function avg(mixelements)
   {
-    var sum=0
-    var len=0
+    var sum=0.00
+    var len=0.00
     if(mixelements.length==0)
     return (null)
     
     else{
       for(let j=0;j<mixelements.length;j++)
       {
-        if(typeof(mixelements[j])=='boolean')
+        if(typeof(mixelements[j])=='bool')
         {
-          if(boolean==true)
+          if(bool==true)
           {
               sum+=1
               len+=1
@@ -355,15 +375,15 @@ describe('Bonus: Calculate the average of a mixed elements array', () => {
         else if(typeof(mixelements[j])=='string')
          {
            sum+=mixelements[j].length
-           len+=1
+           
          }
 
          else 
-         sum+=mixelements[i]
-         len+=1
+         sum+=mixelements[j]
+         
       }
     }
-    return (sum/len)
+    return (parseFloat( (sum/mixelements.length).toFixed(2)))
   }
 })
 
@@ -415,27 +435,25 @@ describe('Unique array', () => {
 });
 
 let repeatedElements=[]
-let uniqueArray=[]
- function uniquifyArray(repeatedElements)
-{
-     let duplicate
-      for(let i=0;i<repeatedElements.length;i++)
-     {
-        duplicate=repeatedElements[i]
-
-          for(let j=i+1;j<repeatedElements.length;j++)
-          {
-                  if(repeatedElements[j]==repeatedElements[i])
-                 {
-                  repeatedElements=repeatedElements.pop(repeatedElements[j])
-                  uniqueArray=uniqueArray.push(repeatedElements[i])
-
-                 }
-          }
-
-      } 
-           return (uniqueArray)
+let uniArray=[]
+ function uniqueArray(repeatedElements)
+{ 
+  if(repeatedElements.length==0)
+  return(null)
+   
+  else {
+          uniArray = [...new Set(repeatedElements)];
+         
+    }
+    return (uniArray)
 }
+
+/*for(let i=0;i<wordsUnique.length;i++){
+    for(let j=i+1;j<wordsUnique.length-1;j++){
+   if(wordsUnique[i] !=  wordsUnique[i+1]){
+     arr[i] = wordsUnique[i];
+   }
+   }  */
 
 describe('Find elements', () => {
   it('should create a function named searchElement', () => {
@@ -470,17 +488,16 @@ describe('Find elements', () => {
 var AllWords=[]
 function searchElement(AllWords,findingWord)
   {
-      if(ALLWords.length==0)
+      if(AllWords.length==0)
         return (null)
 
     else
     {
-     for(let i=0;i<ALLWords.length;i++)
+     for(let i=0;i<AllWords.length;i++)
        {
            if(AllWords[i]==findingWord)
              return (true)
-          else
-             return (false)
+        
 
          }
 
